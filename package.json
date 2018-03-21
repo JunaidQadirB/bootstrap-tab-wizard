@@ -1,0 +1,27 @@
+{
+    "name": "bootstrap-tab-wizard",
+    "version": "1.0.0",
+    "description": "A jQuery plugin to enhance a Bootstrap Tab component to a wizard",
+    "main": "index.js",
+    "keywords": [
+        "jquery-plugin",
+        "ecosystem:jquery",
+        "jquery",
+        "bootstrap",
+        "wizard",
+        "tab"
+    ],
+    "author": "Junaid Qadir Shekhanzai <shekhanzai.baloch@gmail.com>",
+    "license": "MIT",
+    "devDependencies": {
+        "jshint": "latest",
+        "browserify": "latest",
+        "mocha": "latest"
+    },
+    "scripts": {
+        "lint": "jshint **.js",
+        "build": "browserify index.js > jquery-bootstrap-tab-wizard.min.js",
+        "prepublish": "npm run build",
+        "prebuild": "npm run lint"
+    }
+}
