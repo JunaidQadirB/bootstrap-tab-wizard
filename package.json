@@ -19,7 +19,7 @@
         "mocha": "latest"
     },
     "scripts": {
-        "lint": "jshint **.js",
+        "lint": "jshint index.js",
         "build": "browserify index.js > jquery-bootstrap-tab-wizard.min.js",
         "prepublish": "npm run build",
         "prebuild": "npm run lint"
