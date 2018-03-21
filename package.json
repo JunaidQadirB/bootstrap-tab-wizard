@@ -1,6 +1,6 @@
 {
     "name": "bootstrap-tab-wizard",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A jQuery plugin to enhance a Bootstrap Tab component to a wizard",
     "main": "index.js",
     "keywords": [
