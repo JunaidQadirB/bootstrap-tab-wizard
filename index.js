@@ -12,6 +12,7 @@
             showTabs: true,
             nextButtonClass: '.btnNext',
             previousButtonClass: '.btnPrevious',
+            finishButtonText: 'Finish',
             onNext: function (callback) {
                 if (typeof  callback === 'function') {
                     callback();
@@ -31,14 +32,6 @@
         if (!settings.showTabs) {
             $(self).find('.nav-tabs').hide();
         }
-        if (!$(this).find(settings.nextButtonClass).length) {
-            $(this).append(`<button class="btn btn-primary">Next</button>`);
-        }
-        if (!$(this).find(settings.previousButtonClass).length) {
-            $(this).append(`<button class="btn btn-primary">Previous</button>`);
-        }
-
-
         $(self).find(settings.nextButtonClass).click(function () {
             let btn = this;
             if ($(btn).hasClass('btnFinish')) {
@@ -52,7 +45,16 @@
                         return false;
                     }
                 });
-                checkIfFinish(self, settings);
+            }
+        });
+        $(self).find('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            let btn = $(self).find(settings.nextButtonClass);
+            var tab = $(e.target).attr('href');
+            $(self).find('.tab-content').find($(e.target));
+            if ($(self).find(tab).is(':last-child')) {
+                btn.addClass('btnFinish').text(settings.finishButtonText);
+            } else {
+                $(btn).removeClass('btnFinish').text('Next');
             }
         });
 
@@ -65,18 +67,7 @@
                     return false;
                 }
             });
-
-            checkIfFinish(self, settings);
         });
         return this;
     };
-
-    function checkIfFinish(self, settings) {
-        let btn = $(self).find(settings.nextButtonClass);
-        if ($(self).find('.tab-content .active').is(':last-child')) {
-            btn.addClass('btnFinish').text('Finish');
-        } else {
-            $(btn).removeClass('btnFinish').text('Next');
-        }
-    }
 }(jQuery));
